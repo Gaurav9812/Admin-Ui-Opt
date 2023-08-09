@@ -14,6 +14,10 @@ const Pagination = ({
 }) => {
   let totalPages = Math.ceil(totalRecords / membersPerPage);
 
+  if (activePage < 0 || activePage > totalPages) {
+    setActivePage(1);
+  }
+
   const move = (to) => {
     if (to) {
       if (activePage < totalPages) {

@@ -20,14 +20,14 @@ const MembersHeader = function ({
     if (checked) {
       setSelectedMembers(
         members.slice(startIndex, endIndex).filter((member) => {
-          return selectedMembers.includes(member.id);
+          return selectedMembers.includes(member.props.member.id);
         })
       );
     } else {
       let selectCheckboxTemp = [...selectedMembers];
       members.slice(startIndex, endIndex).forEach((member) => {
-        if (!selectedMembers.includes(member.id)) {
-          selectCheckboxTemp.push(member.id);
+        if (!selectedMembers.includes(member.props.member.id)) {
+          selectCheckboxTemp.push(member.props.member.id);
         }
       });
       setSelectedMembers(selectCheckboxTemp);
@@ -38,7 +38,7 @@ const MembersHeader = function ({
   const checkForAllBoxInCurrPage = () => {
     let flag = true;
     members.slice(startIndex, endIndex).forEach((member) => {
-      if (!selectedMembers.includes(member.id)) {
+      if (!selectedMembers.includes(member.props.member.id)) {
         flag = false;
         return;
       }

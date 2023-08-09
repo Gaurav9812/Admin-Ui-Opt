@@ -21,6 +21,12 @@ export const MembersTable = function ({ members, searchText, setMembers }) {
   let startIndex = (activePage - 1) * membersPerPage,
     endIndex = activePage * membersPerPage;
 
+  let totalPages = Math.ceil(rows.length / membersPerPage);
+
+  if (activePage < 0 || activePage > totalPages) {
+    setActivePage(1);
+  }
+
   //Deleting sellected checkbox columns
   const deleteSelected = () => {
     const membersAfterDeleting = members.filter((member) => {
@@ -53,7 +59,7 @@ export const MembersTable = function ({ members, searchText, setMembers }) {
         <MembersHeader
           startIndex={startIndex}
           endIndex={endIndex}
-          members={members}
+          members={rows}
           setSelectedMembers={setSelectedMembers}
           selectedMembers={selectedMembers}
           activePage={activePage}

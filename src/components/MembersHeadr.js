@@ -10,10 +10,12 @@ const MembersHeader = function ({
 }) {
   const [allChecked, setAllChecked] = useState(false);
 
+  //using use effect hook to check if all checkbox in current page are selected or not
   useEffect(() => {
     checkForAllBoxInCurrPage();
   }, [members, selectedMembers, activePage]);
 
+  //adding all checkbox in selectedCheckbox array
   const addAllInCheckbox = (checked) => {
     if (checked) {
       setSelectedMembers(
@@ -32,6 +34,7 @@ const MembersHeader = function ({
     }
   };
 
+  // check if all checkbox in current page are selected or not if yes then setting allChecked as true
   const checkForAllBoxInCurrPage = () => {
     let flag = true;
     members.slice(startIndex, endIndex).forEach((member) => {

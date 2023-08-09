@@ -6,14 +6,15 @@ import Loading from "./Loading";
 import { GEEK_TRUST_URL } from "../Constant";
 
 const Members = function () {
-  const [members, setMembers] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [dataFetched, setDataFetched] = useState(false);
+  const [members, setMembers] = useState([]); // Members State Array
+  const [searchText, setSearchText] = useState(""); // Search Text State Array
+  const [dataFetched, setDataFetched] = useState(false); // In this state im setting whether data fetched from api or not
 
   useEffect(function () {
     fetchMembers();
   }, []);
 
+  //to fetch all members
   async function fetchMembers() {
     let data = await fetch(GEEK_TRUST_URL);
     data = await data.json();

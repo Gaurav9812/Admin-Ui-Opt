@@ -10,6 +10,7 @@ const GetFilterdRows = function (
 ) {
   let rows = [];
 
+  //TO delete all Selected members
   const addDeleteSelectedmember = (memberId) => {
     let index = selectedMembers.indexOf(memberId);
 
@@ -22,6 +23,7 @@ const GetFilterdRows = function (
     }
   };
 
+  //Delete a member from delete icon
   const deleteMember = (memberId) => {
     let newMembers = members.filter((member) => {
       return member.id != memberId;
@@ -29,6 +31,7 @@ const GetFilterdRows = function (
     setMembers(newMembers);
   };
 
+  //saving changes on update
   const saveChanges = (memberId, memberName, memberEmail, memberRole) => {
     let newMembers = members.map((member) => {
       if (member.id == memberId) {
@@ -45,6 +48,7 @@ const GetFilterdRows = function (
     setMembers(newMembers);
   };
 
+  // if user want to discard then setting initial state
   const discardChanges = () => {
     setMembers(members);
   };

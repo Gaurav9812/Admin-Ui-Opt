@@ -21,14 +21,16 @@ export const MembersTable = function ({ members, searchText, setMembers }) {
   let startIndex = (activePage - 1) * membersPerPage,
     endIndex = activePage * membersPerPage;
 
+  //Deleting sellected checkbox columns
   const deleteSelected = () => {
     const membersAfterDeleting = members.filter((member) => {
       return !selectedMembers.includes(member.id);
     });
     setMembers(membersAfterDeleting);
-
+    // re-initializing sellected checkbox columns
     setSelectedMembers([]);
 
+    //if last page all rows are deleted then moving active page one less
     if (
       activePage != 1 &&
       activePage - 1 == parseInt(membersAfterDeleting.length / membersPerPage)
